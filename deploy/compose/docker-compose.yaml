@@ -3,9 +3,9 @@ services:
   msg_broker:
     image: "nats:latest"
     container_name: nats
-    ports:
-      - 1742:4222
-      - 1722:8222
+    #ports:
+    #  - 1742:4222
+    #  - 1722:8222
     command: -c /tmp/nats/config/nats.cfg
     env_file:
       - .env.nats
@@ -22,8 +22,8 @@ services:
   controller:
     image: "oktopusp/controller"
     container_name: controller
-    ports:
-      - 1700:8000
+    #ports:
+    #  - 1700:8000
     depends_on:
       - mongo_usp
     env_file:
@@ -40,8 +40,8 @@ services:
   mongo_usp:
     image: mongo
     container_name: mongo_usp
-    ports:
-      - 27017:27017
+    #ports:
+    #  - 27017:27017
     networks:
       usp_network:
         ipv4_address: 172.16.235.4
@@ -55,9 +55,9 @@ services:
   mqtt:
     image: "oktopusp/mqtt"
     container_name: mqtt
-    ports:
-      - 1718:1883
-      - 1783:8883
+    #ports:
+    #  - 1718:1883
+    #  - 1783:8883
     env_file:
       - .env.all
     volumes:
@@ -70,8 +70,8 @@ services:
   ws:
     image: "oktopusp/ws"
     container_name: websockets
-    ports:
-      - 1788:8080
+    #ports:
+    #  - 1788:8080
     env_file:
       - .env.all
     volumes:
@@ -84,8 +84,8 @@ services:
   stomp:
     image: "oktopusp/stomp"
     container_name: stomp
-    ports:
-      - 17616:61613
+    #ports:
+    #  - 17616:61613
     networks:
       usp_network:
         ipv4_address: 172.16.235.8
